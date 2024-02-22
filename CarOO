@@ -1,0 +1,54 @@
+// Vehicle class
+class Vehicle {
+    constructor(make, model, year) {
+        this.a = make;
+        this.b = model;
+        this.c = year; // adding value placeholders
+    }
+    honk() {
+        return "Beep."
+    }
+    toString() {
+        return `The vehicle is a ${this.a} ${this.b} from ${this.c}.`// adding methods that can be called
+    } 
+}
+
+// Car class, inheriting Vehicle
+class Car extends Vehicle {
+    constructor(a,b,c) {
+      super(a,b,c) // adding values that can be used in methods of Vehicle class
+      this.numWheels = 4; 
+      }
+}
+
+// Motorcycle class, inheriting Vehicle
+class Motorcycle extends Vehicle {
+    constructor(a,b,c) {
+      super(a,b,c)
+      this.numWheels = 2;
+      }
+      revEngine() {
+          return "VROOM!!!"; // adding additional method
+      }
+}
+
+// Garage class
+class Garage {
+    constructor(capacity) {
+        this.vehicles = [];
+        this.d = capacity; // adding value placeholders
+    }
+    add(elem) {
+        if (this.vehicles.length < this.d) { // first check if capacity is reached
+            if (elem.numWheels === 4) {
+                this.vehicles.push('Car'); // if numWheels is 4, it's a car
+                return "Vehicle added!";
+            } else if (elem.numWheels === 2) {
+                this.vehicles.push('Motorcycle'); // if numWheels is 2, it's a motorcycle
+                return "Vehicle added!";
+            }
+            else {return "Only vehicles are allowed in here!";} // neither car or motorcycle
+        }
+        else {return "Sorry, we’re full."} // otherwise capcity reached
+    }
+}
